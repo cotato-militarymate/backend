@@ -6,8 +6,11 @@ import cotato.militaryMate.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-@Service
+import java.util.ArrayList;
+import java.util.List;
+
 @RequiredArgsConstructor
+@Service
 public class PostServiceImpl implements PostService{
 
     private final PostRepository postRepository;
@@ -23,14 +26,41 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public PostDto.getPost getPostDetail(long id) {
-        Post post = postRepository.findById(id).get();
+    public List<PostDto.GetPost> getPostDetail( ) {
+        List<Post> all = postRepository.findAll();
+        List<PostDto.GetPost> lists=new ArrayList<>();
 
-        PostDto.getPost postEntity = PostDto.getPost.builder()
-                .title(post.getTitle())
-                .content(post.getContent())
-                .build();
+        int i=0;
+        for(Post post : all){
+            PostDto.GetPost build = PostDto.GetPost.builder()
+                    .id(post.getId())
+                    .title(post.getTitle())
+                    .content(post.getContent())
+                    .build();
 
-        return postEntity;
+            lists.add(build);
+            i++;
+            if(i>=3) break;
+        }
+
+        return lists;
+    }
+
+    @Override
+    public List<PostDto.GetPost> getAllPost() {
+        List<Post> all = postRepository.findAll();
+
+        List<PostDto.GetPost> lists=new ArrayList<>();
+        for(Post post : all){
+            PostDto.GetPost build = PostDto.GetPost.builder()
+                    .id(post.getId())
+                    .title(post.getTitle())
+                    .content(post.getContent())
+                    .build();
+
+            lists.add(build);
+        }
+
+        return lists;
     }
 }

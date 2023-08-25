@@ -1,6 +1,7 @@
 package cotato.militaryMate.domain.dto;
 
 import lombok.*;
+import org.springframework.lang.Nullable;
 
 public class PostDto {
 
@@ -8,7 +9,11 @@ public class PostDto {
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class getPost{
+    public static class GetPost {
+
+        @Nullable
+        private long id;
+
         private String title;
         private String content;
     }
