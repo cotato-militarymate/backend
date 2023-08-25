@@ -55,6 +55,7 @@ public class EnlistmentNoticeService {
        User sender = userRepository.findById(senderId).orElseThrow();
         User receiver = userRepository.findById(receiverId).orElseThrow();
 
+        //TODO: 이메일로 보내기
         EnlistmentNotice enlistmentNotice = EnlistmentNotice.builder()
                 .sender(sender)
                 .receiver(receiver)
