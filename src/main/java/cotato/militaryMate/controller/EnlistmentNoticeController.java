@@ -23,4 +23,9 @@ public class EnlistmentNoticeController {
     public ApiResponse<EnlistmentNoticeListResponse> getReceivedEnlistmentNoticeList(@PathVariable("receiverId") Long receiverId) {
         return ApiResponse.createSuccess(enlistmentNoticeService.getReceivedEnlistmentNoticeList(receiverId));
     }
+
+    @GetMapping("/send/{senderId}")
+    public ApiResponse<EnlistmentNoticeListResponse> getSendEnlistmentNoticeList(@PathVariable("senderId") Long senderId) {
+        return ApiResponse.createSuccess(enlistmentNoticeService.getSendEnlistmentNoticeList(senderId));
+    }
 }
