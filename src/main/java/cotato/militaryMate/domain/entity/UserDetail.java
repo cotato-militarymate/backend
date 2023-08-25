@@ -34,6 +34,9 @@ public class UserDetail {
 
     @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="Asia/Seoul")
     private LocalDateTime hopeDay;
+
+    @Enumerated(value = EnumType.STRING)
     private SericeTypeEnum hopeType;
+    @Enumerated(value = EnumType.STRING)
     private ExcerciseAbilityEnum exerciseAbility;
 }

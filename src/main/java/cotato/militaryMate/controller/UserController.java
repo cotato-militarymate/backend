@@ -30,5 +30,4 @@ public class UserController {
         return ApiResponse.createSuccess(userService.findUserDetail(userId));
     }
 
-
 }

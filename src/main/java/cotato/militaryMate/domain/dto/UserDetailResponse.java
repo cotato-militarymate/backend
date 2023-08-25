@@ -8,6 +8,7 @@ import cotato.militaryMate.enums.SericeTypeEnum;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -17,20 +18,21 @@ public class UserDetailResponse {
     private String nickname;
     private String city;
     private int age;
-    private String smoke;
+    private int smoke;
     private String mbti;
-    private String hopeDay;
+    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="Asia/Seoul")
+    private LocalDateTime hopeDay;
     private String hopeType;
 
     @Builder
     public UserDetailResponse(User user, UserDetail userDetail) {
-        this.email = email;
-        this.nickname = nickname;
-        this.city = city;
-        this.age = age;
-        this.smoke = smoke;
-        this.mbti = mbti;
-        this.hopeDay = hopeDay;
-        this.hopeType = hopeType;
+        this.email = user.getEmail();
+        this.nickname = user.getNickname();
+        this.city = user.getCity();
+        this.age = user.getAge();
+        this.smoke = userDetail.getSmoke().getStatus();
+        this.mbti = userDetail.getMbti();
+        this.hopeDay = userDetail.getHopeDay();
+        this.hopeType = userDetail.getHopeType().getType();
     }
 }
