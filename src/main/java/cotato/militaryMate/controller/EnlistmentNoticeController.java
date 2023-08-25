@@ -1,9 +1,11 @@
 package cotato.militaryMate.controller;
 
+import cotato.militaryMate.domain.dto.AcceptEnlistmentNoticeRespnse;
 import cotato.militaryMate.domain.dto.ApiResponse;
 import cotato.militaryMate.domain.dto.enlistmentNotice.EnlistmentNoticeListResponse;
 import cotato.militaryMate.domain.dto.enlistmentNotice.SendEnlistmentNoticeRequest;
 import cotato.militaryMate.domain.dto.enlistmentNotice.SendEnlistmentNoticeResponse;
+import cotato.militaryMate.domain.entity.EnlistmentNotice;
 import cotato.militaryMate.service.EnlistmentNoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -22,5 +24,9 @@ public class EnlistmentNoticeController {
     @GetMapping("/received/{receiverId}")
     public ApiResponse<EnlistmentNoticeListResponse> getReceivedEnlistmentNoticeList(@PathVariable("receiverId") Long receiverId) {
         return ApiResponse.createSuccess(enlistmentNoticeService.getReceivedEnlistmentNoticeList(receiverId));
+    }
+    @PostMapping("accept/{senderId}/{recieverId}")
+    public ApiResponse<AcceptEnlistmentNoticeRespnse> acceptEnlistmentNotice(@PathVariable("senderId") Long senderId, @PathVariable("receiverId") Long receiverId) {
+            return ApiResponse.createSuccess(enlistmentNoticeService.create(senderId, receiverId));
     }
 }
