@@ -11,15 +11,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/posts")
 public class PostController {
 
-    private final PostService postService;
+    private final PostService postServiceImpl;
     @PostMapping("/create")
     public ApiResponse<?> createPost(@RequestBody PostDto.Request req){
 
-        return ApiResponse.createSuccess(postService.createPost(req));
+        return ApiResponse.createSuccess(postServiceImpl.createPost(req));
     }
 
-    @GetMapping("/{postId}")
-    public ApiResponse<?> getPost(@PathVariable Long postId){
-        return ApiResponse.createSuccess(postService.getPostDetail(postId));
+    @GetMapping("/list")
+    public ApiResponse<?> getPost(){
+        return ApiResponse.createSuccess(postServiceImpl.getPostDetail());
+    }
+
+    @GetMapping("/list/all")
+    public ApiResponse<?> getAllPost(){
+        return ApiResponse.createSuccess(postServiceImpl.getAllPost());
     }
 }
