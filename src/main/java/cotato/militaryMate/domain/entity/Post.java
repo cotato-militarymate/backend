@@ -5,13 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
 
 @Getter
 @Entity
 @NoArgsConstructor
-public class post {
+public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +23,13 @@ public class post {
     @Column(length = 1000, nullable = false)
     private String content;
 
+    @Column(nullable = false)
+    private String title;
+
     @Builder
-    public post(User user, String content) {
+    public Post(User user, String content, String title) {
         this.user = user;
+        this.title = title;
         this.content = content;
     }
 }

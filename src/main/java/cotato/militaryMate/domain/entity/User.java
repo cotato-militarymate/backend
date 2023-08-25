@@ -18,6 +18,9 @@ public class User {
     private Long userId;
 
     @Column
+    private int age;
+
+    @Column
     private String email;
 
     @Column
