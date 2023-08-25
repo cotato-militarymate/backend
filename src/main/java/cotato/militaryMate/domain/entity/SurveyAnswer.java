@@ -18,10 +18,9 @@ public class SurveyAnswer {
     @Column(name = "survey_answer_id")
     private int answerId;
 
-    @Column
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User user;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)

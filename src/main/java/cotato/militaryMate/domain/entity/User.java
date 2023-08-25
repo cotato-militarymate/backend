@@ -28,4 +28,10 @@ public class User {
 
     @Column
     private String city;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private SurveyAnswer surveyAnswer;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private UserDetail userDetail;
 }

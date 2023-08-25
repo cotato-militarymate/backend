@@ -1,6 +1,7 @@
 package cotato.militaryMate.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import cotato.militaryMate.enums.Answer;
 import cotato.militaryMate.enums.ExcerciseAbilityEnum;
 import cotato.militaryMate.enums.SericeTypeEnum;
 import lombok.AllArgsConstructor;
@@ -19,6 +20,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDetail {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userDetailId;
 
     @OneToOne(fetch = FetchType.LAZY)
