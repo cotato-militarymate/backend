@@ -1,5 +1,8 @@
 package cotato.militaryMate.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum SericeTypeEnum {
     ARMY("육군"),
     NAVY("해군"),

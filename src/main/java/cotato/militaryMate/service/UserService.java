@@ -7,16 +7,19 @@ import cotato.militaryMate.domain.entity.User;
 import cotato.militaryMate.domain.entity.UserDetail;
 import cotato.militaryMate.repository.UserDetailRepository;
 import cotato.militaryMate.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
-    private UserRepository userRepository;
-    private UserDetailRepository userDetailRepository;
+    private final UserRepository userRepository;
+    private final UserDetailRepository userDetailRepository;
 
     @Transactional
     public UserResponse findUser(Long userId) {
@@ -24,7 +27,7 @@ public class UserService {
         return  UserResponse.builder()
                 .email(user.getEmail())
                 .city(user.getCity())
-                .nickname(user.getCity())
+                .nickname(user.getNickname())
                 .age(user.getAge())
                 .build();
 
