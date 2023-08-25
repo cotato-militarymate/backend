@@ -1,12 +1,11 @@
 package cotato.militaryMate.domain.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 public class PostDto {
 
     @Getter
+    @Builder
     @AllArgsConstructor
     @NoArgsConstructor
     public static class getPost{

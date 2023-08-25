@@ -24,6 +24,13 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public PostDto.getPost getPostDetail(long id) {
-        return null;
+        Post post = postRepository.findById(id).get();
+
+        PostDto.getPost postEntity = PostDto.getPost.builder()
+                .title(post.getTitle())
+                .content(post.getContent())
+                .build();
+
+        return postEntity;
     }
 }
