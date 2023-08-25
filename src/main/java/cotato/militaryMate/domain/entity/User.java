@@ -32,9 +32,6 @@ public class User {
     @Column
     private String city;
 
-    @Column
-    private int age;
-
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private SurveyAnswer surveyAnswer;
 

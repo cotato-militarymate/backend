@@ -33,7 +33,7 @@ public class UserService {
     @Transactional
     public UserDetailResponse findUserDetail(Long userId) {
         User user = userRepository.findById(userId).orElseThrow();
-        UserDetail userDetail = userDetailRepository.findByUserId(userId).orElseThrow();
+        UserDetail userDetail = userDetailRepository.findByUser(user).orElseThrow();
         return  UserDetailResponse.builder()
                 .user(user)
                 .userDetail(userDetail)

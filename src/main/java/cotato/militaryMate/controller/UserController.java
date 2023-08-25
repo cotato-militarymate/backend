@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/user")
+@RequestMapping("/api/user")
 public class UserController {
 
     private final UserService userService;
@@ -25,7 +25,7 @@ public class UserController {
         return ApiResponse.createSuccess(userService.findUser(userId));
     }
 
-    @GetMapping("detail/{userId}")
+    @GetMapping("/detail/{userId}")
     public ApiResponse<UserDetailResponse> getUserDetailAttribute(@PathVariable Long userId) {
         return ApiResponse.createSuccess(userService.findUserDetail(userId));
     }
