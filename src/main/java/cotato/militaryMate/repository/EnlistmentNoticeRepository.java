@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface EnlistmentNoticeRepository extends JpaRepository<EnlistmentNotice, Long> {
-    List<EnlistmentNotice> findAllByReceiver_id(User user);
+    List<EnlistmentNotice> findAllByReceiver(User user);
 }

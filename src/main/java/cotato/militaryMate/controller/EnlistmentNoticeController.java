@@ -1,6 +1,7 @@
 package cotato.militaryMate.controller;
 
 import cotato.militaryMate.domain.dto.ApiResponse;
+import cotato.militaryMate.domain.dto.enlistmentNotice.EnlistmentNoticeListResponse;
 import cotato.militaryMate.domain.dto.enlistmentNotice.SendEnlistmentNoticeRequest;
 import cotato.militaryMate.domain.dto.enlistmentNotice.SendEnlistmentNoticeResponse;
 import cotato.militaryMate.service.EnlistmentNoticeService;
