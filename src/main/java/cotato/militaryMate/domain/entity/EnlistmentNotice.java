@@ -18,15 +18,15 @@ public class EnlistmentNotice {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sender_id")
-    private User sender_id;
+    private User sender;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "receiver_id")
-    private User receiver_id;
+    private User receiver;
 
     @Builder
-    public EnlistmentNotice(User sender_id, User receiver_id) {
-        this.sender_id = sender_id;
-        this.receiver_id = receiver_id;
+    public EnlistmentNotice(User sender, User receiver) {
+        this.sender = sender;
+        this.receiver = receiver;
     }
 }
