@@ -1,5 +1,6 @@
 package cotato.militaryMate.service;
 
+import cotato.militaryMate.domain.dto.AcceptEnlistmentNoticeRespnse;
 import cotato.militaryMate.domain.dto.enlistmentNotice.EnlistmentNoticeListResponse;
 import cotato.militaryMate.domain.dto.enlistmentNotice.EnlistmentNoticeUsername;
 import cotato.militaryMate.domain.dto.enlistmentNotice.SendEnlistmentNoticeRequest;
@@ -48,5 +49,16 @@ public class EnlistmentNoticeService {
             enlistmentNoticeUsernameList.add(new EnlistmentNoticeUsername(en.getReceiver().getUserId(), en.getReceiver().getNickname()));
         }
         return new EnlistmentNoticeListResponse(enlistmentNoticeUsernameList);
+    }
+  
+    public AcceptEnlistmentNoticeRespnse create(Long senderId, Long receiverId) {
+       User sender = userRepository.findById(senderId).orElseThrow();
+        User receiver = userRepository.findById(receiverId).orElseThrow();
+
+        EnlistmentNotice enlistmentNotice = EnlistmentNotice.builder()
+                .sender(sender)
+                .receiver(receiver)
+                .build();
+        return new AcceptEnlistmentNoticeRespnse(enlistmentNotice.getId());
     }
 }
